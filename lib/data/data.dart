@@ -1,0 +1,27 @@
+import 'package:whatsapp_ui_clone/models/user.dart';
+
+List<User> userData = [
+  User('Sallie Dickinson', '7.jpg', 'Lorem ipsum dolor sit amet', '23:55', 3),
+  User('Jed Morisette', '21.jpg', 'consectetur adipiscing elit', '23:47', 4),
+  User('Aric Hintz', '22.jpg', 'sed do eiusmod tempor incididunt ut', '23:19',
+      10),
+  User('Penelope Stoltenberg', '56.jpg', 'labore et dolore magna aliqua',
+      '22:50', 5),
+  User('Janick Miller', '57.jpg', 'Porta lorem mollis aliquam ut', '22:39', 7),
+  User('Angeline Shanahan', '68.jpg', 'porttitor leo a diam', '22:13', 11),
+  User('Godfrey Gerlach', '91.jpg', 'Bibendum ut tristique et egestas', '21:41',
+      3),
+  User('Aletha Armstrong', '105.jpg', 'quis ipsum', '21:39', 6),
+  User('Mr. Jordan Steuber', '106.jpg', 'Maecenas sed enim ut sem', '21:29', 5),
+  User('Hortense Pollich', '91 (1).jpg', 'viverra aliquet eget sit', '21:24',
+      15),
+  User('Luis Lakin', '12.jpg', 'Dictum at tempor', '19:59', 20),
+  User('Jayda Effertz', '32.jpg', 'commodo ullamcorper', '19:23', 8),
+  User('Valeria Rohan', '38.jpg', 'malesuada proin', '18:40', 4),
+  User('Miss Halie Nienow', '44.jpg', 'libero nunc consequat', '18:11', 11),
+  User('Ines Koelpin', '44 (1).jpg', 'Libero justo laoreet sit', '15:20', 9),
+  User('Kraig Kertzmann', '72.jpg', 'amet cursus sit amet dictum', '15:08', 8),
+  User('Martin Roberts', '86.jpg', 'Nisi quis eleifend', '14:10', 14),
+  User('Sierra Baumbach', '108.jpg', 'Tempus urna et pharetra', '09:53', 21),
+  //User(Faker().person.name(), '91 (1).jpg', Faker().lorem.toString()),
+];
