@@ -7,4 +7,5 @@ class AppTexts {
   static const tabBarCallsTab = "ARAMALAR";
   static const statusPageUpdateText = "Son güncellemeler";
   static const myStatusText = "Durumum";
+  static const seenUpdatesText = "Görülen güncellemeler";
 }

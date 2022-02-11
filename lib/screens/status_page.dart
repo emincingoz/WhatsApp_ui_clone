@@ -16,77 +16,108 @@ class StatusPage extends StatefulWidget {
 class _StatusPageState extends State<StatusPage> {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Padding(
-          padding: const EdgeInsets.only(top: 10, left: 4, bottom: 7),
-          child: ListTile(
-            title: const Text(
-              AppTexts.myStatusText,
-              style: TextStyle(fontWeight: FontWeight.bold),
-            ),
-            leading: DashedCircle(
-              child: Padding(
-                padding: const EdgeInsets.all(3.5),
-                child: CircleAvatar(
-                  backgroundImage: const AssetImage("assets/images/user.png"),
-                  radius: context.mediumValue - context.lowValue,
+    return CustomScrollView(
+      slivers: [
+        SliverList(
+          delegate: SliverChildListDelegate(
+            [
+              Padding(
+                padding: const EdgeInsets.only(top: 10, left: 3, bottom: 7),
+                child: ListTile(
+                  title: const Text(
+                    AppTexts.myStatusText,
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  leading: DashedCircle(
+                    child: Padding(
+                      padding: const EdgeInsets.all(3.5),
+                      child: CircleAvatar(
+                        backgroundImage:
+                            const AssetImage("assets/images/user.png"),
+                        radius: context.mediumValue - context.lowValue,
+                      ),
+                    ),
+                    color: AppColors.myStatusDashedCircleColor,
+                    dashes: 5,
+                  ),
+                  subtitle: const Text("Bugün 23:59"),
+                  trailing: const Icon(
+                    AppIcons.statusSettingsIcon,
+                    color: AppColors.statusDashedCircleColor,
+                  ),
                 ),
               ),
-              color: AppColors.myStatusDashedCircleColor,
-              dashes: 5,
-            ),
-            subtitle: const Text("Bugün 23:59"),
-            trailing: const Icon(
-              AppIcons.statusSettingsIcon,
-              color: AppColors.statusDashedCircleColor,
-            ),
-          ),
-        ),
-        const Align(
-          alignment: Alignment.topLeft,
-          child: Padding(
-            padding: EdgeInsets.symmetric(vertical: 7, horizontal: 15),
-            child: Text(
-              AppTexts.statusPageUpdateText,
-              style: TextStyle(
-                  color: AppColors.statusLastStatusTextColor,
-                  fontWeight: FontWeight.w800),
-            ),
-          ),
-        ),
-        Expanded(
-          child: ListView.builder(
-              scrollDirection: Axis.vertical,
-              shrinkWrap: true,
-              itemCount: userData.length,
-              itemBuilder: (context, index) {
-                return Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 4),
-                  child: ListTile(
-                    title: Text(
-                      userData[index].userName,
-                      style: const TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                    leading: DashedCircle(
-                      child: Padding(
-                        padding: const EdgeInsets.all(3.5),
-                        child: CircleAvatar(
-                          backgroundImage: AssetImage(
-                              'assets/images/' + userData[index].userImage),
-                          radius: context.mediumValue - context.lowValue,
-                        ),
-                      ),
-                      color: AppColors.statusDashedCircleColor,
-                      dashes: userData[index].statusCount!,
-                    ),
-                    subtitle: Text(userData[index].lastMessageTime),
+              const Align(
+                alignment: Alignment.topLeft,
+                child: Padding(
+                  padding: EdgeInsets.symmetric(vertical: 7, horizontal: 15),
+                  child: Text(
+                    AppTexts.statusPageUpdateText,
+                    style: TextStyle(
+                        color: AppColors.statusLastStatusTextColor,
+                        fontWeight: FontWeight.w800),
                   ),
-                );
-              }),
+                ),
+              ),
+            ],
+          ),
         ),
-        const Text("Görülen güncellemeler"),
+        SliverList(
+          delegate: SliverChildBuilderDelegate(
+            _dynamicElementGenerator,
+            childCount: (userData.length ~/ 2),
+          ),
+        ),
+        SliverList(
+          delegate: SliverChildListDelegate(
+            [
+              const Align(
+                alignment: Alignment.topLeft,
+                child: Padding(
+                  padding: EdgeInsets.symmetric(vertical: 7, horizontal: 15),
+                  child: Text(
+                    AppTexts.seenUpdatesText,
+                    style: TextStyle(
+                        color: AppColors.statusLastStatusTextColor,
+                        fontWeight: FontWeight.w800),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+        SliverList(
+          delegate: SliverChildBuilderDelegate(
+            _dynamicElementGenerator,
+            childCount: userData.length ~/ 2,
+          ),
+        ),
       ],
+    );
+  }
+
+  Widget? _dynamicElementGenerator(BuildContext context, int index) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 4),
+      child: ListTile(
+        title: Text(
+          userData[index].userName,
+          style: const TextStyle(fontWeight: FontWeight.bold),
+        ),
+        leading: DashedCircle(
+          child: Padding(
+            padding: const EdgeInsets.all(3.5),
+            child: CircleAvatar(
+              backgroundImage:
+                  AssetImage('assets/images/' + userData[index].userImage),
+              radius: context.mediumValue - context.lowValue,
+            ),
+          ),
+          color: AppColors.statusDashedCircleColor,
+          dashes: userData[index].statusCount!,
+        ),
+        subtitle: Text(userData[index].lastMessageTime),
+      ),
     );
   }
 }
