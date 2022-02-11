@@ -7,4 +7,6 @@ class AppIcons {
   static const cameraIcon = Icons.photo_camera;
   static const newCallIcon = Icons.add_call;
   static const statusSettingsIcon = Icons.more_horiz;
+  static const voiceCallIcon = Icons.phone;
+  static const videoCallIcon = Icons.videocam_rounded;
 }

@@ -8,4 +8,6 @@ class AppTexts {
   static const statusPageUpdateText = "Son güncellemeler";
   static const myStatusText = "Durumum";
   static const seenUpdatesText = "Görülen güncellemeler";
+  static const myStatusLastAddText = "Bugün 23:59";
+  static const statusPageUserImagePath = "assets/images/user.png";
 }

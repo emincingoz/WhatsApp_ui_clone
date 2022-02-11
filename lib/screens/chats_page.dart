@@ -25,7 +25,6 @@ class _ChatPageState extends State<ChatPage> {
               backgroundImage:
                   AssetImage('assets/images/' + userData[index].userImage),
               radius: context.mediumValue - context.lowValue,
-              
             ),
             trailing: Text(userData[index].lastMessageTime),
             onTap: () {},

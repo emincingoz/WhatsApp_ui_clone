@@ -33,18 +33,26 @@ class _StatusPageState extends State<StatusPage> {
                       padding: const EdgeInsets.all(3.5),
                       child: CircleAvatar(
                         backgroundImage:
-                            const AssetImage("assets/images/user.png"),
+                            const AssetImage(AppTexts.statusPageUserImagePath),
                         radius: context.mediumValue - context.lowValue,
                       ),
                     ),
                     color: AppColors.myStatusDashedCircleColor,
                     dashes: 5,
                   ),
-                  subtitle: const Text("Bugün 23:59"),
-                  trailing: const Icon(
+                  subtitle: const Text(AppTexts.myStatusLastAddText),
+                  trailing: IconButton(
+                    onPressed: () {},
+                    icon: const Icon(
+                      AppIcons.statusSettingsIcon,
+                      color: AppColors.statusDashedCircleColor,
+                    ),
+                  ),
+                  /*const Icon(
                     AppIcons.statusSettingsIcon,
                     color: AppColors.statusDashedCircleColor,
-                  ),
+                  ),*/
+                  onTap: () {},
                 ),
               ),
               const Align(
@@ -117,6 +125,7 @@ class _StatusPageState extends State<StatusPage> {
           dashes: userData[index].statusCount!,
         ),
         subtitle: Text(userData[index].lastMessageTime),
+        onTap: () {},
       ),
     );
   }
